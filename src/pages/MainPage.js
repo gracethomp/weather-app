@@ -1,3 +1,13 @@
+import Trips from "../components/Trips.js";
+import Header from "../layout/Header.js";
+
 export default function MainPage() {
-  return <section id="main"></section>;
+  return (
+    <>
+      <Header />
+      <section id="main">
+        <Trips />
+      </section>
+    </>
+  );
 }
