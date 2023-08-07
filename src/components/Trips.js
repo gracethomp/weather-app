@@ -1,9 +1,9 @@
 import Search from "./Search.js";
-import TripCard from "./TripCard.js";
+import TripCard from "./cards/TripCard.js";
 import berlinImage from "../assets/berlin.jpg"
 import tokyoImage from "../assets/tokyo.jpg"
 import barcelonaImage from "../assets/barcelona.jpg"
-import AddButton from "./AddButton.js";
+import AddButton from "./buttons/AddButton.js";
 
 export default function Trips() {
   return (

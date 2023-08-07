@@ -3,7 +3,7 @@ export default function DayCard() {
         <div className="day-card">
             <p>Monday</p>
             <p className="day-card-weather-emoji">⛅</p>
-            <p>28°/21°</p>
+            <p className="low-high-temp"> 28°/21°</p>
         </div>
     )
 }

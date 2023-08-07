@@ -1,4 +1,4 @@
-import DayCard from "./DayCard";
+import DayCard from "./cards/DayCard";
 
 export default function Week() {
   return (
