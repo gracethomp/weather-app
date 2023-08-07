@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 30px;
 }
 
 code {
@@ -33,6 +32,20 @@ h5 {
 
 input:focus {
   outline: none;
+}
+
+.main {
+  display: flex;
+}
+
+.trips-select-section {
+  flex: 2;
+  margin: 30px;
+}
+
+.status {
+  flex: 1;
+  background-color: #110e3b;
 }
 
 .search {
@@ -73,6 +86,7 @@ input:focus {
   width: 100%;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .trip-card-info {
@@ -101,4 +115,60 @@ input:focus {
   width: 12rem;
   height: 12rem;
   background-color: #f2f4f8;
+  cursor: pointer;
+}
+
+.days {
+  display: flex;
+  gap: 25px;
+}
+
+.days p {
+  margin: 10px;
+}
+
+.day-card-weather-emoji {
+  font-size: 50px;
+  cursor: default;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.today-weather {
+  text-align: center;
+}
+
+.status p {
+  margin: 5px;
+}
+
+.current-day {
+  font-size: 50px;
+}
+
+.current-temp {
+  display: flex;
+  align-items: flex-start;
+}
+
+.celsius {
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.current-weather-emoji {
+  font-size: 60px;
+}
+.current-weather-emoji span {
+  font-size: 15px;
+}
+
+.current-city {
+  font-size: 45px;
+  font-weight: lighter;
 }
