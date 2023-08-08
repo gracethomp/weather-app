@@ -1,6 +1,6 @@
-export default function Button({text, additionalClass}) {
+export default function Button({text, additionalClass, onClick}) {
     return (
-        <button className={"modal-button " + additionalClass}>{text}</button>
+        <button onClick={onClick} className={"modal-button " + additionalClass}>{text}</button>
     )
     
 }

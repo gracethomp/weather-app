@@ -7,6 +7,10 @@ import Modal from "./Modal.js";
 export default function Trips({ tripsList, selectedId }) {
   const [isModalVisible, setModalVisible] = useState(false);
 
+  const handleModalClose = () => {
+    setModalVisible(false);
+  }
+
   return (
     <>
       <Search placeholder="Search your trip" />
@@ -22,7 +26,7 @@ export default function Trips({ tripsList, selectedId }) {
           onClick={() => setModalVisible(true)}
         />
       </div>
-      {isModalVisible && <Modal />}
+      {isModalVisible && <Modal handleCancelClick={() => handleModalClose()} />}
     </>
   );
 }

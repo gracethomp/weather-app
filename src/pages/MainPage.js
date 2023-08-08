@@ -11,7 +11,7 @@ export default function MainPage() {
   const trips = useSelector((state) => state.trips);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTrip, setSelectedTrip] = useState(trips[0]);
-  const days = useFetchDays(trips[0]);
+  // const days = useFetchDays(trips[0]);
  
 
   return (
@@ -20,7 +20,7 @@ export default function MainPage() {
         <div className="trips-select-section">
           <Header />
           <Trips tripsList={trips} selectedId={selectedTrip.id} />
-          <Week days={days} />
+          {/* <Week days={days} /> */}
         </div>
         <TodayInfoSection
           selectedTrip={selectedTrip}
