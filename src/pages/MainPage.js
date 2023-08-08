@@ -11,12 +11,16 @@ export default function MainPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [apiData, setApiData] = useState([]);
-  const [selectedTrip, setSelectedTrip] = useState(trips[0])
+  const [currentConditions, setCurrentConditions] = useState({});
+  const [selectedTrip, setSelectedTrip] = useState(trips[0]);
 
   useEffect(() => {
-    axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedTrip.city}/${selectedTrip.startDate}/${selectedTrip.endDate}?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Ctempmax%2Ctempmin%2Ctemp%2Cicon&include=days&key=BM8FXV3HKM5FN3GVASGJ25DMR&contentType=json`)
-      .then(response => setApiData(response.data.days))
-      .catch(error => console.error('Error fetching data:', error));
+    axios
+      .get(
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedTrip.city}/${selectedTrip.startDate}/${selectedTrip.endDate}?unitGroup=metric&elements=datetime%2Cname%2Caddress%2Ctempmax%2Ctempmin%2Ctemp%2Cicon&include=days%2Ccurrent&key=KEGZJRSYFZNKBD7W5TUFME5UR&contentType=json`
+      )
+      .then((response) => setApiData(response.data.days))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
@@ -25,9 +29,11 @@ export default function MainPage() {
         <div className="trips-select-section">
           <Header />
           <Trips tripsList={trips} selectedId={selectedTrip.id} />
-          <Week days={apiData}/>
+          <Week days={apiData} />
         </div>
-        <TodayInfoSection city={selectedTrip.city} />
+        <TodayInfoSection
+          selectedTrip={selectedTrip}
+        />
       </div>
     </>
   );
