@@ -96,6 +96,14 @@ select:focus {
   border: 1px solid #e6e6e6;
 }
 
+.selected-trip {
+  border: 2px solid rgb(142, 172, 255);
+}
+
+.selected-trip .trip-card-info {
+  border: none;
+}
+
 .trip-card-info p {
   margin: 0;
   margin-top: 10px;
@@ -128,7 +136,6 @@ select:focus {
 .days {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .days p {
@@ -137,10 +144,22 @@ select:focus {
 
 .day-card {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.day-card {
+  font-size: 10px;
+  color: #828282;
+}
+
+.low-high-temp {
+  color: black;
 }
 
 .day-card-weather-emoji {
-  font-size: 50px;
+  font-size: 40px;
   cursor: default;
 }
 

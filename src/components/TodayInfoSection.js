@@ -1,6 +1,6 @@
 import Timer from "./Timer";
 
-export default function TodayInfoSection() {
+export default function TodayInfoSection({city}) {
   return (
     <>
       <div className="status">
@@ -10,7 +10,7 @@ export default function TodayInfoSection() {
             <p className="current-weather-emoji">⛅ 28</p>
             <p className="celsius">°C</p>
           </div>
-          <p className="current-city">Berlin</p>
+          <p className="current-city">{city}</p>
         </div>
         <Timer />
       </div>
