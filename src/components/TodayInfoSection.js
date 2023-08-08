@@ -2,9 +2,12 @@ import Timer from "./Timer";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { getDayOfWeek } from "../utils/dayOfWeekPicker";
+import { getEmojiByName } from "../utils/weatherEmojiPicker";
 
 export default function TodayInfoSection({ selectedTrip }) {
   const [currentTemp, setCurrentTemp] = useState();
+  const [emoji, setEmoji] = useState();
+
   useEffect(() => {
     axios
       .get(
@@ -12,7 +15,7 @@ export default function TodayInfoSection({ selectedTrip }) {
       )
       .then((response) => {
         setCurrentTemp(response.data.currentConditions.temp);
-        console.log();
+        setEmoji(getEmojiByName(response.data.currentConditions.icon));
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -22,7 +25,7 @@ export default function TodayInfoSection({ selectedTrip }) {
         <div className="today-weather">
           <p className="current-day">{getDayOfWeek(new Date())}</p>
           <div className="current-temp">
-            <p className="current-weather-emoji">⛅ {currentTemp}</p>
+            <p className="current-weather-emoji">{emoji} {currentTemp}</p>
             <p className="celsius">°C</p>
           </div>
           <p className="current-city">{selectedTrip.city}</p>
