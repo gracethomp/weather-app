@@ -1,8 +1,9 @@
 import TripCard from "./cards/TripCard.js";
 import AddButton from "./buttons/AddButton.js";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Modal from "./Modal.js";
-import Button from "./buttons/Button.js";
+import Pagination from "./Pagination.js";
+import getPaginationIndexes from "../utils/startEndIndex.js";
 
 export default function Trips({ tripsList, selectedId, setSelected }) {
   const [id, setId] = useState(7);
@@ -10,20 +11,26 @@ export default function Trips({ tripsList, selectedId, setSelected }) {
   const tripsPerPage = 7;
   const [currentPage, setCurrentPage] = useState(1);
 
+  const { startingIndex, endingIndex } = useMemo(
+    () => getPaginationIndexes(currentPage, tripsPerPage),
+    [tripsPerPage, currentPage]
+  );
+
+  const tripsToShow = useMemo(
+    () =>
+      tripsList.filter((trip, index) => {
+        return index >= startingIndex && index < endingIndex;
+      }),
+    [tripsList, endingIndex, startingIndex]
+  );
+
   const handleNextPage = () => {
-    setCurrentPage(prevPage => prevPage + 1);
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
   const handlePrevPage = () => {
-    setCurrentPage(prevPage => prevPage - 1);
+    setCurrentPage((prevPage) => prevPage - 1);
   };
-
-  const startingIndex = (currentPage - 1) * tripsPerPage;
-  const endingIndex = startingIndex + tripsPerPage;
-
-  const tripsToShow = tripsList.filter((trip, index) => {
-    return index >= startingIndex && index < endingIndex;
-  });
 
   const handleModalClose = () => {
     setModalVisible(false);
@@ -33,16 +40,31 @@ export default function Trips({ tripsList, selectedId, setSelected }) {
     <>
       <div className="trips">
         {tripsToShow?.map((trip) => (
-          <TripCard trip={trip} isSelected={selectedId === trip.id} onClick={() => setSelected(trip)}/>
+          <TripCard
+            trip={trip}
+            isSelected={selectedId === trip.id}
+            onClick={() => setSelected(trip)}
+          />
         ))}
         <AddButton
           addMessage={"Add new trip"}
           onClick={() => setModalVisible(true)}
         />
       </div>
-      <Button onClick={handlePrevPage} additionalClass="pagination-button" text="<"/>
-      <Button onClick={handleNextPage} additionalClass="pagination-button" text=">"/>
-      {isModalVisible && <Modal handleCancelClick={() => handleModalClose()} id={id} handleAdd={() => setId(id + 1)}/>}
+      <Pagination
+        handlePrevPage={handlePrevPage}
+        handleNextPage={handleNextPage}
+        currentPage={currentPage}
+        length={tripsList.length}
+        endingIndex={endingIndex}
+      />
+      {isModalVisible && (
+        <Modal
+          handleCancelClick={() => handleModalClose()}
+          id={id}
+          handleAdd={() => setId(id + 1)}
+        />
+      )}
     </>
   );
 }

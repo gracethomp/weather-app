@@ -322,6 +322,10 @@ select.selected {
   color: #fff;
 }
 
+.pagination-button {
+  margin: 5px;
+}
+
 @media (max-width: 1200px) {
   .trips {
     margin-top: 30px;
