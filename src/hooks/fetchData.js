@@ -29,5 +29,6 @@ export function useFetchCurrentCondition(selectedTrip) {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+  
   return { currentTemp, emoji };
 }

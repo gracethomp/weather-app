@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getMinMaxDays } from "../utils/minMaxDate";
 
-export default function DatePicker({ labelText, id }) {
+export default function DatePicker({ labelText, id, date, handleChange }) {
   const [currentType, setCurrentType] = useState("text");
   const { minDate, maxDate } = getMinMaxDays();
 
@@ -18,11 +18,13 @@ export default function DatePicker({ labelText, id }) {
         placeholder="Select date"
         type={currentType}
         id={id}
+        value={date}
         name="trip-start"
         min={minDate}
         max={maxDate}
         className="date-input form-select"
         onClick={handleInputClick}
+        onChange={handleChange}
       />
     </>
   );
