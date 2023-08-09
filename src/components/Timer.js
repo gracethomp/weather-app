@@ -1,5 +1,5 @@
 import TimeCard from "./cards/TimeCard";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { calculateTimeRemaining } from "../utils/remainingTimeCalculator";
 
 export default function Timer({ targetDate }) {
