@@ -10,5 +10,5 @@ export function getMinMaxDays(params) {
   const maxMonth = String(limitDate.getMonth() + 1).padStart(2, "0");
   const maxDay = String(limitDate.getDate()).padStart(2, "0");
   const maxDate = `${maxYear}-${maxMonth}-${maxDay}`;
-  return {minDate, maxDate }
+  return { minDate, maxDate };
 }

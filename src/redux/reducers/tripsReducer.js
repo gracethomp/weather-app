@@ -9,6 +9,7 @@ const initialState = [
   },
 ];
 
+
 const tripsReducer = (state = initialState, action) => {
   switch (action.type) {
     case "trips/addTrip":

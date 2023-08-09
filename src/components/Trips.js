@@ -6,7 +6,6 @@ import Pagination from "./Pagination.js";
 import getPaginationIndexes from "../utils/startEndIndex.js";
 
 export default function Trips({ tripsList, selectedId, setSelected }) {
-  const [id, setId] = useState(7);
   const [isModalVisible, setModalVisible] = useState(false);
   const tripsPerPage = 7;
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,8 +62,7 @@ export default function Trips({ tripsList, selectedId, setSelected }) {
       {isModalVisible && (
         <Modal
           handleCancelClick={() => handleModalClose()}
-          id={id}
-          handleAdd={() => setId(id + 1)}
+          id={tripsList.length}
         />
       )}
     </>

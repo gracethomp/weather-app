@@ -5,7 +5,7 @@ import ModalButtons from "./buttons/ModalButtons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Modal({ handleCancelClick, id, handleAdd }) {
+export default function Modal({ handleCancelClick, id }) {
   const dispatch = useDispatch();
   const cities = useSelector((state) => state.cities);
   const [selectedOption, setSelectedOption] = useState("");
@@ -31,23 +31,26 @@ export default function Modal({ handleCancelClick, id, handleAdd }) {
     if (date1 > date2) {
       setWarning("Wrong dates!");
     } else if (selectedOption && startDate && endDate) {
-      const imageUrl = cities.find(
-        (city) => city.city === selectedOption
-      ).imageUrl;
-      const newTrip = {
-        id: id,
-        city: selectedOption,
-        startDate: startDate,
-        endDate: endDate,
-        imageUrl: imageUrl,
-      };
-      dispatch(addTrip(newTrip));
-      handleAdd();
-      handleCancelClick();
+      handleSuccessfulSave();
     } else {
       setWarning("Fill all fields!")
     }
   };
+
+  const handleSuccessfulSave = () => {
+    const imageUrl = cities.find(
+      (city) => city.city === selectedOption
+    ).imageUrl;
+    const newTrip = {
+      id: id + 1,
+      city: selectedOption,
+      startDate: startDate,
+      endDate: endDate,
+      imageUrl: imageUrl,
+    };
+    dispatch(addTrip(newTrip));
+    handleCancelClick();
+  }
 
   return (
     <div className="modal" id="myModal">
