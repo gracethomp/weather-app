@@ -5,9 +5,9 @@ export default function Week({ days }) {
     <div className="week">
       <h2>Week</h2>
       <div className="days">
-        {days.map((day) => (
+        {/* {days.map((day) => (
           <DayCard day={day}/>
-        ))}
+        ))} */}
       </div>
     </div>
   );

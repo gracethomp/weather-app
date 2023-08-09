@@ -3,7 +3,7 @@ import { getDayOfWeek } from "../utils/dayOfWeekPicker";
 import { useFetchCurrentCondition } from "../hooks/fetchData";
 
 export default function TodayInfoSection({ selectedTrip }) {
-  const { currentTemp, emoji } = useFetchCurrentCondition(selectedTrip);
+  // const { currentTemp, emoji } = useFetchCurrentCondition(selectedTrip);
 
   return (
     <>
@@ -11,9 +11,9 @@ export default function TodayInfoSection({ selectedTrip }) {
         <div className="today-weather">
           <p className="current-day">{getDayOfWeek(new Date())}</p>
           <div className="current-temp">
-            <p className="current-weather-emoji">
+            {/* <p className="current-weather-emoji">
               {emoji} {currentTemp}
-            </p>
+            </p> */}
             <p className="celsius">°C</p>
           </div>
           <p className="current-city">{selectedTrip.city}</p>
