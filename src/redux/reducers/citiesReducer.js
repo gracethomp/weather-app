@@ -3,7 +3,7 @@ const initialState = [
     id: 1,
     city: "Berlin",
     imageUrl:
-      "https://img.freepik.com/free-photo/building-with-columns_1160-803.jpg?w=1480&t=st=1691520611~exp=1691521211~hmac=03c50eac34bc778ac018404bf5496a0897ef882d3343176f552ec5622642e81e",
+    "https://www.germany.travel/media/redaktion/staedte_kultur_content/Berlin_Brandenburger_Tor_im_Sonnenuntergang_Leitmotiv_German_Summer_Cities.jpg",
   },
   {
     id: 2,
