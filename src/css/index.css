@@ -326,6 +326,10 @@ select.selected {
   margin: 5px;
 }
 
+.warning {
+  color: red;
+}
+
 @media (max-width: 1200px) {
   .trips {
     margin-top: 30px;

@@ -11,6 +11,7 @@ export default function Modal({ handleCancelClick, id, handleAdd }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [warning, setWarning] = useState("");
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -27,10 +28,9 @@ export default function Modal({ handleCancelClick, id, handleAdd }) {
   const handleSaveTrip = () => {
     const date1 = new Date(startDate);
     const date2 = new Date(endDate);
-    if(date1 > date2) {
-
-    }
-    else if (selectedOption && startDate && endDate) {
+    if (date1 > date2) {
+      setWarning("Wrong dates!");
+    } else if (selectedOption && startDate && endDate) {
       const imageUrl = cities.find(
         (city) => city.city === selectedOption
       ).imageUrl;
@@ -44,6 +44,8 @@ export default function Modal({ handleCancelClick, id, handleAdd }) {
       dispatch(addTrip(newTrip));
       handleAdd();
       handleCancelClick();
+    } else {
+      setWarning("Fill all fields!")
     }
   };
 
@@ -72,6 +74,7 @@ export default function Modal({ handleCancelClick, id, handleAdd }) {
             date={endDate}
             handleChange={handleEndDateChange}
           />
+          {warning && <p className="warning">{warning}</p>}
         </div>
         <ModalButtons cancel={handleCancelClick} accept={handleSaveTrip} />
       </div>

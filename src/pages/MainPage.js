@@ -10,19 +10,19 @@ import Search from "../components/fields/Search.js";
 export default function MainPage() {
   const trips = useSelector((state) => state.trips);
   const [selectedTrip, setSelectedTrip] = useState(trips[0]);
-  const [filteredTrips, setTrips] = useState(trips);
-  // const days = useFetchDays(selectedTrip);
+  const [filteredTrips, setFilteredTrips] = useState(trips);
+  const days = useFetchDays(selectedTrip);
   
 
   useEffect(() => {
-    setTrips(trips);
+    setFilteredTrips(trips);
   }, [trips]);
 
   const handleSearch = (searchText) => {
     const filtered = trips.filter((trip) =>
       trip.city.toLowerCase().includes(searchText.toLowerCase())
     );
-    setTrips(filtered);
+    setFilteredTrips(filtered);
   };
 
   return (
@@ -32,7 +32,7 @@ export default function MainPage() {
           <Header />
           <Search placeholder="Search your trip" onSearch={(value) => handleSearch(value)}/>
           <Trips tripsList={filteredTrips} selectedId={selectedTrip.id} setSelected={(trip) => setSelectedTrip(trip)}/>
-          {/* <Week days={days} /> */}
+          <Week days={days} />
         </div>
         <TodayInfoSection
           selectedTrip={selectedTrip}

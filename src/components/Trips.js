@@ -16,13 +16,15 @@ export default function Trips({ tripsList, selectedId, setSelected }) {
     [tripsPerPage, currentPage]
   );
 
-  const tripsToShow = useMemo(
-    () =>
-      tripsList.filter((trip, index) => {
-        return index >= startingIndex && index < endingIndex;
-      }),
-    [tripsList, endingIndex, startingIndex]
-  );
+  const tripsToShow = useMemo(() => {
+    const sorted = [...tripsList].sort((a, b) => {
+      return new Date(a.startDate) - new Date(b.startDate);
+    });
+
+    return sorted.filter((trip, index) => {
+      return index >= startingIndex && index < endingIndex;
+    });
+  }, [tripsList, endingIndex, startingIndex]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
