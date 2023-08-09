@@ -82,6 +82,7 @@ select:focus {
   grid-template-columns: repeat(4, 12rem);
   grid-template-rows: 17rem;
   justify-content: space-between;
+  gap: 2px;
 }
 
 .trip-card {

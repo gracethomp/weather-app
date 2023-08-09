@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
-
-export default function Dropdown({ selectedOption, handleOptionChange }) {
-  const cities = useSelector((state) => state.cities);
-
+export default function Dropdown({
+  cities,
+  selectedOption,
+  handleOptionChange,
+}) {
   return (
     <>
       <label for="city" className="field-title">
@@ -18,7 +18,9 @@ export default function Dropdown({ selectedOption, handleOptionChange }) {
           Please Select a city
         </option>
         {cities.map((city) => (
-          <option key={city.id} value={city.city}>{city.city}</option>
+          <option key={city.id} value={city.city}>
+            {city.city}
+          </option>
         ))}
       </select>
     </>
