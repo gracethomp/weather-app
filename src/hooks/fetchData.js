@@ -7,7 +7,7 @@ export function useFetchDays(selectedTrip) {
   useEffect(() => {
     axios
       .get(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedTrip.city}/${selectedTrip.startDate}/${selectedTrip.endDate}?unitGroup=metric&elements=datetime%2Cname%2Caddress%2Ctempmax%2Ctempmin%2Ctemp%2Cicon&include=days%2Ccurrent&key=BM8FXV3HKM5FN3GVASGJ25DMR&contentType=json`
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedTrip.city}/${selectedTrip.startDate}/${selectedTrip.endDate}?unitGroup=metric&elements=datetime%2Cname%2Caddress%2Ctempmax%2Ctempmin%2Ctemp%2Cicon&include=days%2Ccurrent&key=JA72EPG39Y7R93E534SY2VFTN&contentType=json`
       )
       .then((response) => setDays(response.data.days))
       .catch((error) => console.error("Error fetching data:", error));
@@ -21,7 +21,7 @@ export function useFetchCurrentCondition(selectedTrip) {
   useEffect(() => {
     axios
       .get(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedTrip.city}/today?unitGroup=metric&include=current%2Cfcst&key=BM8FXV3HKM5FN3GVASGJ25DMR&contentType=json`
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${selectedTrip.city}/today?unitGroup=metric&include=current%2Cfcst&key=JA72EPG39Y7R93E534SY2VFTN&contentType=json`
       )
       .then((response) => {
         setCurrentTemp(response.data.currentConditions.temp);
