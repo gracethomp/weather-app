@@ -5,7 +5,7 @@ import Week from "../components/Week.js";
 import Header from "../layout/Header.js";
 import { useSelector } from "react-redux";
 import { useFetchDays } from "../hooks/fetchData.js";
-import Search from "../components/Search.js";
+import Search from "../components/fields/Search.js";
 
 export default function MainPage() {
   const trips = useSelector((state) => state.trips);

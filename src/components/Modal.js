@@ -1,6 +1,6 @@
 import { addTrip } from "../redux/actions/tripsActions";
-import Dropdown from "./CityDropdown";
-import DatePicker from "./DatePicker";
+import Dropdown from "./fields/CityDropdown";
+import DatePicker from "./fields/DatePicker";
 import ModalButtons from "./buttons/ModalButtons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

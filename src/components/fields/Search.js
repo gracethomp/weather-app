@@ -1,4 +1,4 @@
-import searchIcon from "../assets/search.svg";
+import searchIcon from "../../assets/search.svg";
 import { useState } from "react";
 
 export default function Search({ placeholder, onSearch}) {

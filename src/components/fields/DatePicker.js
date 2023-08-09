@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getMinMaxDays } from "../utils/minMaxDate";
+import { getMinMaxDays } from "../../utils/minMaxDate";
 
 export default function DatePicker({ labelText, id, date, handleChange }) {
   const [currentType, setCurrentType] = useState("text");
