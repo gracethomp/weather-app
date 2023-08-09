@@ -5,7 +5,7 @@ import ModalButtons from "./buttons/ModalButtons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Modal({ handleCancelClick, id }) {
+export default function Modal({ handleCancelClick, id, handleAdd }) {
   const dispatch = useDispatch();
   const cities = useSelector((state) => state.cities);
   const [selectedOption, setSelectedOption] = useState("");
@@ -42,6 +42,7 @@ export default function Modal({ handleCancelClick, id }) {
         imageUrl: imageUrl,
       };
       dispatch(addTrip(newTrip));
+      handleAdd();
       handleCancelClick();
     }
   };

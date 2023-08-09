@@ -19,7 +19,7 @@ export default function MainPage() {
       <div className="main">
         <div className="trips-select-section">
           <Header />
-          <Trips tripsList={trips} selectedId={selectedTrip.id} />
+          <Trips tripsList={trips} selectedId={selectedTrip.id} setSelected={(trip) => setSelectedTrip(trip)}/>
           {/* <Week days={days} /> */}
         </div>
         <TodayInfoSection
