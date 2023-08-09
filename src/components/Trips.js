@@ -1,4 +1,3 @@
-import Search from "./Search.js";
 import TripCard from "./cards/TripCard.js";
 import AddButton from "./buttons/AddButton.js";
 import { useState } from "react";

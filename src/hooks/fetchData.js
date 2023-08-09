@@ -11,7 +11,7 @@ export function useFetchDays(selectedTrip) {
       )
       .then((response) => setDays(response.data.days))
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [selectedTrip]);
   return days;
 }
 
@@ -28,7 +28,7 @@ export function useFetchCurrentCondition(selectedTrip) {
         setEmoji(getEmojiByName(response.data.currentConditions.icon));
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [selectedTrip]);
   
   return { currentTemp, emoji };
 }
