@@ -41,6 +41,7 @@ select:focus {
 
 .main {
   display: flex;
+  height: 100vh;
 }
 
 .trips-select-section {

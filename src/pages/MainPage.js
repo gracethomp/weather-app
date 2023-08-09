@@ -6,20 +6,28 @@ import Header from "../layout/Header.js";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchDays } from "../hooks/fetchData.js";
+import Search from "../components/Search.js";
 
 export default function MainPage() {
   const trips = useSelector((state) => state.trips);
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedTrip, setSelectedTrip] = useState(trips[0]);
+  const [filteredTrips, setTrips] = useState(trips);
   // const days = useFetchDays(trips[0]);
- 
+
+  const handleSearch = (searchText) => {
+    const filtered = trips.filter((trip) =>
+      trip.city.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setTrips(filtered);
+  };
 
   return (
     <>
       <div className="main">
         <div className="trips-select-section">
           <Header />
-          <Trips tripsList={trips} selectedId={selectedTrip.id} setSelected={(trip) => setSelectedTrip(trip)}/>
+          <Search placeholder="Search your trip" onSearch={(value) => handleSearch(value)}/>
+          <Trips tripsList={filteredTrips} selectedId={selectedTrip.id} setSelected={(trip) => setSelectedTrip(trip)}/>
           {/* <Week days={days} /> */}
         </div>
         <TodayInfoSection

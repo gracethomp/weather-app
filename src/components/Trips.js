@@ -14,7 +14,6 @@ export default function Trips({ tripsList, selectedId, setSelected }) {
 
   return (
     <>
-      <Search placeholder="Search your trip" />
       <div className="trips">
         {tripsList?.map((trip) => (
           <TripCard trip={trip} isSelected={selectedId === trip.id} onClick={() => setSelected(trip)}/>
