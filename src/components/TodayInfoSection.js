@@ -18,7 +18,7 @@ export default function TodayInfoSection({ selectedTrip }) {
           </div>
           <p className="current-city">{selectedTrip.city}</p>
         </div>
-        <Timer />
+        <Timer targetDate={new Date(selectedTrip.startDate)}/>
       </div>
     </>
   );
